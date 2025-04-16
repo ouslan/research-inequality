@@ -38,41 +38,39 @@ the is significant negative impact on the growth when the state poses more incom
 The main database use is the Global Database on intergeneration Mobility from the World Bank \cite{gdim2018global}.
 
 \section{Methodology}
+
+\subsection{Formula}
 \begin{equation}
 	growth_{i \tau} = \rho y_{i \tau - 1} + (\theta_1 \theta_2 IM_i) \cdot GINI_{i \tau -1} + \Gamma X_{i \tau-1} + u_i + \gamma_{\tau} + \epsilon_{i \tau}
 \end{equation}
 
 where:
-\begin{enumerate}
+\begin{itemize}
 	\item $growth$ is the 55-year non overlapping average of real per capita gdp growth
 	\item $i$ is the country
 	\item $\tau$ is the time period starting in 1960
 	\item $y$ is the log real GDP per capita
 	\item $u_i$ and $\gamma_\tau$ denotes country fixed effects and period specific dummies
-	\item
-\end{enumerate}
+\end{itemize}
+
+\subsection{Dataset}
 
 The dataset consists of:
-\begin{enumerate}
+\begin{itemize}
 	\item $166$ countries
 	\item spans from $1950$ to $2015$
 	\item this includes $4437$ separate GINIS.
 	\item $X$ is the matrix of covariates that are standard across-country
-\end{enumerate}
+\end{itemize}
 
 \section{results}
 
-\begin{figure}
+\begin{figure}[h]  % 'h' forces the figure to be placed here, if possible
 	\centering
 	\includegraphics[width=\textwidth]{table_1.png}  % Adjust the width as needed
 	\caption{Caption for Table 1}
 \end{figure}
 
-\begin{figure}
-	\centering
-	\includegraphics[width=\textwidth]{table_2.png}  % Adjust the width as needed
-	\caption{Caption for Table 2}
-\end{figure}
 
 \section{Conclusions}
 
