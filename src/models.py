@@ -28,3 +28,21 @@ def init_dp03_table(db_path: str) -> None:
             );
         """
     )
+
+
+def init_wb_table(db_path: str) -> None:
+    conn = get_conn(db_path=db_path)
+
+    conn.sql(
+        """
+        CREATE TABLE IF NOT EXISTS "WbTable" (
+            year INTEGER,
+            country STRING,
+            gdp FLOAT,
+            gdp_growth FLOAT,
+            spending FLOAT,
+            gini FLOAT,
+            expenses FLOAT
+            );
+        """
+    )

@@ -1,14 +1,17 @@
-from tqdm import tqdm
+import logging
+import os
+from datetime import datetime
+from requests.exceptions import HTTPError
 import polars as pl
 import pandas as pd
 import requests
-import logging
-from ..models import init_dp03_table, get_conn
-import json
-import os
+import world_bank_data as wb
+from tqdm import tqdm
+
+from ..models import get_conn, init_dp03_table, init_wb_table
 
 
-class cleanData:
+class DataClean:
     def __init__(
         self,
         saving_dir: str = "data/",
@@ -107,6 +110,65 @@ class cleanData:
                 logging.info(f"data for {_year} is in the database")
                 continue
         return self.conn.sql("SELECT * FROM 'DP03Table';").pl()
+
+    def pull_wb(self) -> pl.DataFrame:
+        # Get the list of years in db
+        if "WbTable" not in self.conn.sql("SHOW TABLES;").df().get("name").tolist():
+            init_wb_table(self.data_file)
+
+        for _year in range(2012, datetime.now().year):
+            if (
+                self.conn.sql(f"SELECT * FROM 'WbTable' WHERE year={_year}")
+                .df()
+                .empty
+            ):
+                try:
+                    params = [
+                        "NY.GDP.MKTP.CD",
+                        "NY.GDP.MKTP.KD.ZG",
+                        "NE.CON.GOVT.ZS",
+                        "SI.POV.GINI",
+                        "GC.XPN.TOTL.GD.ZS",
+                    ]
+                    rename = {
+                        "NY.GDP.MKTP.CD": "gdp",
+                        "NY.GDP.MKTP.KD.ZG": "gdp_growth",
+                        "NE.CON.GOVT.ZS": "spending",
+                        "SI.POV.GINI": "gini",
+                        "GC.XPN.TOTL.GD.ZS": "expenses",
+                    }
+                    df = self.wb_data(params=params, year=_year)
+                    df = df.rename(rename)
+                    self.conn.sql("INSERT INTO 'WbTable' BY NAME SELECT * FROM df")
+                    # Logging
+                    logging.info(
+                        f"Successfully inserted world bank data for year {_year}"
+                    )
+                except HTTPError:
+                    logging.warning(
+                        f"Could not insert world bank data for year {_year}"
+                    )
+
+            else:
+                logging.info(f"Data for year {_year} already exists in gnitable")
+                continue
+        return self.conn.sql(f"SELECT * FROM 'WbTable'").pl()
+
+    def wb_data(self, params: list, year: int) -> pl.DataFrame:
+        df = pl.DataFrame(wb.get_countries())
+        df = df.select(pl.col("name")).rename({"name": "country"})
+        for param in params:
+            tmp = wb.get_series(
+                param,
+                simplify_index=True,
+                date=str(year),
+            )
+            tmp = pl.DataFrame(pd.DataFrame(tmp).reset_index()).rename(
+                {"Country": "country"}
+            )
+            df = df.join(tmp, on="country", how="inner", validate="1:1")
+            df = df.with_columns(year=pl.lit(year))
+        return df
 
     def pull_file(self, url: str, filename: str, verify: bool = True) -> None:
         """
