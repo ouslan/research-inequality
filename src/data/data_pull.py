@@ -124,18 +124,51 @@ class DataClean:
             ):
                 try:
                     params = [
-                        "NY.GDP.MKTP.CD",
-                        "NY.GDP.MKTP.KD.ZG",
+                        "SP.DYN.TFRT.IN",
+                        "NY.GDP.PCAP.KD",
                         "NE.CON.GOVT.ZS",
-                        "SI.POV.GINI",
-                        "GC.XPN.TOTL.GD.ZS",
+                        "NE.TRD.GNFS.ZS",
+                        "SP.DYN.LE00.IN",
+                        "NY.GDP.PCAP.KD.ZG",
+                        "FP.CPI.TOTL.ZG",
+                        "SP.POP.GROW",
+                        "SE.PRM.ENRR",
+                        "SE.SEC.ENRR",
+                        "SE.TER.ENRR",
+                        "NE.GDI.TOTL.ZS",
+                        "RL.PER.RNK",
+                        "CC.PER.RNK",
+                        "RQ.PER.RNK",
+                        "PV.PER.RNK",
+                        "VA.PER.RNK",
+                        "GE.PER.RNK"
+
+
                     ]
                     rename = {
-                        "NY.GDP.MKTP.CD": "gdp",
-                        "NY.GDP.MKTP.KD.ZG": "gdp_growth",
-                        "NE.CON.GOVT.ZS": "spending",
-                        "SI.POV.GINI": "gini",
-                        "GC.XPN.TOTL.GD.ZS": "expenses",
+                        "SP.DYN.TFRT.IN": "fertility_rate",
+                        "NY.GDP.PCAP.KD": "gdp_per_capita",
+                        "NE.CON.GOVT.ZS": "government_expenditure",
+                        "NE.TRD.GNFS.ZS": "trade",
+                        "SP.DYN.LE00.IN": "life_expectancy",
+                        "NY.GDP.PCAP.KD.ZG": "gdp_per_capita_growth",
+                        "FP.CPI.TOTL.ZG": "inflation",
+                        "SP.POP.GROW": "population_growth",
+                        "SE.PRM.ENRR": "school_primary",
+                        "SE.SEC.ENRR": "school_secondary",
+                        "SE.TER.ENRR": "school_tertiary",
+                        "NE.GDI.TOTL.ZS": "gross_capital_formation",
+                        "RL.PER.RNK": "rule_of_law",
+                        "CC.PER.RNK": "control_of_corruption",
+                        "RQ.PER.RNK": "regulatory_quality",
+                        "PV.PER.RNK": "political_stability",
+                        "VA.PER.RNK": "voice",
+                        "GE.PER.RNK": "government_effect"
+
+
+
+
+                        
                     }
                     df = self.wb_data(params=params, year=_year)
                     df = df.rename(rename)

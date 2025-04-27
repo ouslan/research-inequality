@@ -38,11 +38,24 @@ def init_wb_table(db_path: str) -> None:
         CREATE TABLE IF NOT EXISTS "WbTable" (
             year INTEGER,
             country STRING,
-            gdp FLOAT,
-            gdp_growth FLOAT,
-            spending FLOAT,
-            gini FLOAT,
-            expenses FLOAT
+            fertility_rate FLOAT,
+            gdp_per_capita FLOAT,
+            government_expenditure FLOAT,
+            trade FLOAT,
+            life_expectancy FLOAT,
+            gdp_per_capita_growth FLOAT,
+            inflation FLOAT,
+            population_growth FLOAT,
+            school_primary FLOAT,
+            school_secondary FLOAT,
+            school_tertiary FLOAT,
+            gross_capital_formation FLOAT,
+            rule_of_law FLOAT,
+            control_of_corruption FLOAT,
+            regulatory_quality FLOAT,
+            political_stability FLOAT,
+            voice FLOAT,
+            government_effect FLOAT
             );
         """
     )
