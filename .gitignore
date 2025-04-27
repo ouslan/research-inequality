@@ -166,3 +166,6 @@ aux/
 
 *.ddb
 *.wal
+*.do.stswp
+*.csv
+*.DS_Store
