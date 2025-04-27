@@ -5,20 +5,16 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "arviz[all]>=0.21.0",
-    "bambi>=0.15.0",
-    "duckdb>=1.2.2",
-    "pandas>=2.2.3",
-    "polars>=1.27.1",
-    "pyarrow>=19.0.1",
-    "requests>=2.32.3",
-    "tqdm>=4.67.1",
-    "world-bank-data>=0.1.4",
+  "duckdb>=1.2.2",
+  "pandas>=2.2.3",
+  "polars>=1.27.1",
+  "pyarrow>=19.0.1",
+  "python-dotenv>=1.1.0",
+  "requests>=2.32.3",
+  "stata-setup>=0.1.3",
+  "tqdm>=4.67.1",
+  "world-bank-data>=0.1.4",
 ]
 
 [dependency-groups]
-dev = [
-    "jupyter>=1.1.1",
-    "pre-commit>=4.2.0",
-    "pynvim>=0.5.2",
-]
+dev = ["jupyter>=1.1.1", "pre-commit>=4.2.0", "pynvim>=0.5.2"]
