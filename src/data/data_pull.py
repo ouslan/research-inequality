@@ -116,7 +116,7 @@ class DataClean:
         if "WbTable" not in self.conn.sql("SHOW TABLES;").df().get("name").tolist():
             init_wb_table(self.data_file)
 
-        for _year in range(1960, datetime.now().year):
+        for _year in range(1960, 2023):
             if (
                 self.conn.sql(f"SELECT * FROM 'WbTable' WHERE year={_year}")
                 .df()
