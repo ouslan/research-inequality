@@ -141,7 +141,11 @@ class DataClean:
                         "RQ.PER.RNK",
                         "PV.PER.RNK",
                         "VA.PER.RNK",
-                        "GE.PER.RNK"
+                        "GE.PER.RNK",
+                        "FS.AST.PRVT.GD.ZS",
+                        "FD.AST.PRVT.GD.ZS",
+                        "FS.AST.DOMS.GD.ZS"
+
 
 
                     ]
@@ -163,7 +167,11 @@ class DataClean:
                         "RQ.PER.RNK": "regulatory_quality",
                         "PV.PER.RNK": "political_stability",
                         "VA.PER.RNK": "voice",
-                        "GE.PER.RNK": "government_effect"
+                        "GE.PER.RNK": "government_effect",
+                        "FS.AST.PRVT.GD.ZS": "domestic_private",
+                        "FD.AST.PRVT.GD.ZS": "domestic_bank",
+                        "FS.AST.DOMS.GD.ZS": "domestic_fs"
+
 
 
 
