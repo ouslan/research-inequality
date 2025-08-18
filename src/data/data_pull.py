@@ -11,7 +11,7 @@ from tqdm import tqdm
 from ..models import get_conn, init_dp03_table, init_wb_table
 
 
-class DataClean:
+class DataPull:
     def __init__(
         self,
         saving_dir: str = "data/",
@@ -117,11 +117,7 @@ class DataClean:
             init_wb_table(self.data_file)
 
         for _year in range(1960, 2023):
-            if (
-                self.conn.sql(f"SELECT * FROM 'WbTable' WHERE year={_year}")
-                .df()
-                .empty
-            ):
+            if self.conn.sql(f"SELECT * FROM 'WbTable' WHERE year={_year}").df().empty:
                 try:
                     params = [
                         "SP.DYN.TFRT.IN",
@@ -144,10 +140,7 @@ class DataClean:
                         "GE.PER.RNK",
                         "FS.AST.PRVT.GD.ZS",
                         "FD.AST.PRVT.GD.ZS",
-                        "FS.AST.DOMS.GD.ZS"
-
-
-
+                        "FS.AST.DOMS.GD.ZS",
                     ]
                     rename = {
                         "SP.DYN.TFRT.IN": "fertility_rate",
@@ -170,13 +163,7 @@ class DataClean:
                         "GE.PER.RNK": "government_effect",
                         "FS.AST.PRVT.GD.ZS": "domestic_private",
                         "FD.AST.PRVT.GD.ZS": "domestic_bank",
-                        "FS.AST.DOMS.GD.ZS": "domestic_fs"
-
-
-
-
-
-                        
+                        "FS.AST.DOMS.GD.ZS": "domestic_fs",
                     }
                     df = self.wb_data(params=params, year=_year)
                     df = df.rename(rename)
