@@ -11,7 +11,7 @@ from tqdm import tqdm
 from ..models import get_conn, init_dp03_table, init_wb_table
 
 
-class DataClean:
+class DataPull:
     def __init__(
         self,
         saving_dir: str = "data/",
@@ -116,12 +116,8 @@ class DataClean:
         if "WbTable" not in self.conn.sql("SHOW TABLES;").df().get("name").tolist():
             init_wb_table(self.data_file)
 
-        for _year in range(1960, datetime.now().year):
-            if (
-                self.conn.sql(f"SELECT * FROM 'WbTable' WHERE year={_year}")
-                .df()
-                .empty
-            ):
+        for _year in range(1960, 2023):
+            if self.conn.sql(f"SELECT * FROM 'WbTable' WHERE year={_year}").df().empty:
                 try:
                     params = [
                         "SP.DYN.TFRT.IN",
@@ -141,9 +137,10 @@ class DataClean:
                         "RQ.PER.RNK",
                         "PV.PER.RNK",
                         "VA.PER.RNK",
-                        "GE.PER.RNK"
-
-
+                        "GE.PER.RNK",
+                        "FS.AST.PRVT.GD.ZS",
+                        "FD.AST.PRVT.GD.ZS",
+                        "FS.AST.DOMS.GD.ZS",
                     ]
                     rename = {
                         "SP.DYN.TFRT.IN": "fertility_rate",
@@ -163,12 +160,10 @@ class DataClean:
                         "RQ.PER.RNK": "regulatory_quality",
                         "PV.PER.RNK": "political_stability",
                         "VA.PER.RNK": "voice",
-                        "GE.PER.RNK": "government_effect"
-
-
-
-
-                        
+                        "GE.PER.RNK": "government_effect",
+                        "FS.AST.PRVT.GD.ZS": "domestic_private",
+                        "FD.AST.PRVT.GD.ZS": "domestic_bank",
+                        "FS.AST.DOMS.GD.ZS": "domestic_fs",
                     }
                     df = self.wb_data(params=params, year=_year)
                     df = df.rename(rename)

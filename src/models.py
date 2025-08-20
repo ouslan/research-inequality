@@ -55,7 +55,10 @@ def init_wb_table(db_path: str) -> None:
             regulatory_quality FLOAT,
             political_stability FLOAT,
             voice FLOAT,
-            government_effect FLOAT
+            government_effect FLOAT,
+            domestic_private FLOAT,
+            domestic_bank FLOAT,
+            domestic_fs FLOAT
             );
         """
     )
