@@ -180,7 +180,7 @@ class DataPull:
             else:
                 logging.info(f"Data for year {_year} already exists in gnitable")
                 continue
-        return self.conn.sql(f"SELECT * FROM 'WbTable'").pl()
+        return self.conn.sql("SELECT * FROM 'WbTable'").pl()
 
     def wb_data(self, params: list, year: int) -> pl.DataFrame:
         df = pl.DataFrame(wb.get_countries())

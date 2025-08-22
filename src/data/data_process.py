@@ -32,6 +32,12 @@ class DataClean(DataPull):
                 "gross_capital_formation",
                 "domestic_bank",
                 "advanced_economy",
+                "rule_of_law",
+                "control_of_corruption",
+                "regulatory_quality",
+                "political_stability",
+                "voice",
+                "government_effect",
             )
         )
         return df
