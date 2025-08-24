@@ -154,6 +154,31 @@ class DataClean(DataPull):
                 lambda group: group.interpolate(method="linear")
             )
         data = data.sort_values(["country", "year"])
-        data = data[data["year"] >= 1990]
+        data = data[data["year"] >= 1990].reset_index(drop=True)
+        data = pl.from_pandas(data)
+        data = data.filter(pl.col("advanced_economy") == 0)
+        data = df.with_columns(
+            iq=(
+                pl.col("rule_of_law")
+                + pl.col("control_of_corruption")
+                + pl.col("regulatory_quality")
+                + pl.col("political_stability")
+                + pl.col("voice")
+                + pl.col("government_effect")
+            )
+            / 6
+        )
+        data = data.filter(pl.col("advanced_economy") == 0)
+        IQ = data.select(pl.col("iq").median()).item()
 
-        return data.reset_index(drop=True)
+        data = data.group_by("country").agg(iq=pl.col("iq").mean())
+        data = data.with_columns(
+            iq_dummy=pl.when(pl.col("iq") >= IQ).then(1).otherwise(0)
+        )
+        dataset = df.join(data, on="country", how="inner", validate="m:1")
+        dataset = df.with_columns(
+            year_id=pl.col("year").rank(method="min").over("country"),
+            county_id=pl.col("country").rank(method="min").over("year"),
+        )
+
+        return dataset
