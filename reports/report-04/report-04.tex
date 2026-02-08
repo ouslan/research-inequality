@@ -160,5 +160,44 @@ $$
 	\item \textbf{Future Fiscal Risk:} Projected increases in health and social security spending due to demographic shifts may further expand government size beyond optimal levels if structural reforms are not implemented.
 \end{itemize}
 
+\section{Paper 4: THE EFFECT OF GOVERNMENT SPENDING ON ECONOMIC GROWTH}
+
+\subsection{Summary}
+Theoretical models suggest a non-linear relationship between government size and long-run
+economic growth. However, testing this hypothesis empirically in cross-country studies is
+complicated by the endogeneity of government spending and the accurate identification of
+inflexion points. This paper examines the non-linear hypothesis by incorporating threshold analysis
+in a cross-country growth regression. The methodology utilizes a sample-splitting framework and
+follows an objective strategy for identifying and testing changes in the slope. The results provide
+evidence in support of the non-linear hypothesis for a broad panel of countries. \cite{christie2014effect}
+
+\subsection{Methodology}
+$$
+	Growth_{it} = \beta_0 X_{it} + \beta_1 Gov_{it}^\star I (Gov_{it}\le \lambda) + \beta_1 Gov_{it}^\star I (Gov_{it} > \lambda)
+$$
+$$
+	u_{it} = \mu_i + \theta_t + \epsilon_{it}
+$$
+\begin{itemize}
+	\item $Growth_{it}$: GDP growth rate for country $i$ at time $t$.
+	\item $X_{it}$: Vector of control variables (such as $I/Y$).
+	\item $\mu_i$: Country-specific fixed effect.
+	\item $\theta_t$: Time fixed effect.
+	\item $\varepsilon_{it}$: Normally distributed error term.
+	\item $I(\cdot)$: Indicator function; takes the value of one when the condition inside parentheses is satisfied.
+	\item $\lambda$: The threshold value to be determined within the model.
+	\item $S(\lambda) = \hat{u}(\lambda)' \hat{u}(\lambda)$: Residual sum of squares of the model estimated for a threshold level $\lambda$.
+	\item $\hat{\lambda} = \arg \min_{\lambda} S(\lambda)$: The optimal threshold value that minimizes the residual sum of squares.
+\end{itemize}
+
+\subsection{Conclusions}
+\begin{itemize}
+	\item \textbf{Non-linear Hypothesis:} The study confirms the \textit{Barro non-linear hypothesis} using Hansen (2000) threshold regression on a panel of 136 countries, finding that the impact of government size on growth is contingent on its total share of GDP.
+	\item \textbf{Threshold Estimates:} A universal threshold is identified at 33 \% of GDP for the full sample; however, this optimal point is lower for developed countries, estimated between 26 \% and 32 \%.
+	\item \textbf{Growth Dynamics:} Government expenditure below the threshold typically yields positive growth effects particularly when focusing on productive elements whereas spending exceeding 33 \% of GDP exerts a strong negative effect on long-run growth.
+	\item \textbf{Institutional Mitigation:} The quality of governance acts as a critical moderator; high-quality government services can dampen the negative effects of a large public sector, making non-linearities more pronounced in countries with low institutional effectiveness.
+	\item \textbf{Developmental Variation:} While many developed nations currently exceed optimal size (over 75 \% of the sample), many developing countries in Asia and the ECA remain below the threshold and could benefit from strategic budget increases.
+	\item \textbf{Policy Implications:} Policy makers are advised to create "fiscal space" for productive capital in developing regions while exercising restraint and prioritizing structural efficiency in developed economies to avoid the detrimental effects of over-expansion.
+\end{itemize}
 \printbibliography
 \end{document}
