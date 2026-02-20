@@ -247,11 +247,82 @@ the period 1871-2008 for France, which offers one of the longest stable democrat
 	\item Results support the hypothesis that optimal government size varies across countries, implying country-specific inverted U-shaped curves depending on institutional design.
 \end{itemize}
 
-\section{Paper 6: }
+\section{Paper 6: Economic growth and government size in developed European countries}
 
 \subsection{Summary}
+
+Based on the literature on economic growth, there is a non-linear relationship between
+government size and economic growth, which is usually similar to an inverted U-shaped
+curve and is used to determine the optimum share of government expenditure. The present
+study aims to investigate the non-linear relationship among 14 developed European
+countries during 1995–2014. Final consumption expenditure to gross domestic product
+(FCE), current expenditure other than final consumption to gross domestic product (OCE),
+and government gross fixed capital formation to gross domestic product (GFCF) were
+considered for measuring government size. The results indicate an asymmetric effect of
+FCE and GFCF on economic growth when they are above and below the optimal level.
+The optimum values of FEC and GFCF were estimated to be 16.63 and 2.31%, respectively.
+However, it is noted that OCE always has a negative effect on economic growth. In
+terms of policy prescriptions, governments of developed countries should be aware that
+misallocation of public expenditure can occur given it may likely become unproductive
+after passing an optimal size. \cite{Hajamini2018EconomicGA}
+
 \subsection{Methodology}
+
+\[
+	\begin{split}
+		\mathrm{GGDP}_{it} = \alpha_1 \mathrm{LAB}_{it} & + \alpha_2 \mathrm{INV}_{it} + \alpha_3 \mathrm{EXP}_{it} + \alpha_4 \mathrm{IMP}_{it}                                  \\
+		                                                & + (\delta_1 + \beta_1 \mathrm{GOV}_{it}) \cdot \mathbf{1}(\mathrm{GOV}_{it} \le \gamma_1)                               \\
+		                                                & + \sum_{j=2}^{J} (\delta_j + \beta_j \mathrm{GOV}_{it}) \cdot \mathbf{1}(\gamma_{j-1} < \mathrm{GOV}_{it} \le \gamma_j) \\
+		                                                & + (\delta_{J+1} + \beta_{J+1} \mathrm{GOV}_{it}) \cdot \mathbf{1}(\mathrm{GOV}_{it} > \gamma_J)                         \\
+		                                                & + u_{it}
+	\end{split}
+\]
+\begin{itemize}
+	\item $\mathrm{GGDP}_{it}$: Annual growth rate of real Gross Domestic Product for country $i$ at time $t$.
+	\item $\mathrm{LAB}_{it}$: Growth rate of working-age population for country $i$ at time $t$.
+	\item $\mathrm{INV}_{it}$: Gross fixed investment as a proportion of GDP (proxy for the saving rate).
+	\item $\mathrm{INVP}_{it}$: Private fixed investment as a proportion of GDP (used when public investment is separated).
+	\item $\mathrm{EXP}_{it}$: Growth rate of exports of goods and services.
+	\item $\mathrm{IMP}_{it}$: Growth rate of imports of goods and services.
+	\item $\mathrm{GOV}_{it}$: Government size, measured as the share of government expenditure in GDP.
+	\item $\mathrm{FCE}_{it}$: Final consumption expenditure of government as a proportion of GDP.
+	\item $\mathrm{OCE}_{it}$: Other current government expenditure (excluding final consumption) as a proportion of GDP.
+	\item $\mathrm{GFCF}_{it}$: Gross fixed capital formation of the government as a proportion of GDP.
+	\item $\alpha_0$: Intercept term.
+	\item $\alpha_1, \alpha_2, \alpha_3, \alpha_4, \alpha_5$: Slope coefficients associated with explanatory variables.
+	\item $\delta_j$: Regime-specific intercept adjustment in the threshold model.
+	\item $\beta_j$: Regime-specific slope coefficient of government size in the threshold model.
+	\item $\gamma_j$: Threshold parameter determining regime changes.
+	\item $u_{it}$: Composite error term.
+	\item $\mu_i$: Unobservable country-specific effect.
+	\item $\lambda_t$: Unobservable time-specific effect.
+	\item $v_{it}$: Idiosyncratic error term.
+	\item $\mathbf{1}(\cdot)$: Indicator function that takes the value 1 if the condition holds and 0 otherwise.
+\end{itemize}
 \subsection{Conclusions}
+
+\begin{itemize}
+	\item The study confirms the existence of the inverted U-shaped relationship between government expenditure and economic growth, known as the \textit{Barro curve}, for 14 European Union countries.
+	\item Unlike previous studies focusing only on Final Consumption Expenditure (FCE), this paper separately examines:
+	      \begin{itemize}
+		      \item Final Consumption Expenditure (FCE)
+		      \item Other Current Expenditure (OCE)
+		      \item Gross Fixed Capital Formation (GFCF)
+	      \end{itemize}
+	\item Results show:
+	      \begin{itemize}
+		      \item A non-linear (inverted U-shaped) relationship for FCE and GFCF.
+		      \item A consistently negative effect of OCE on economic growth.
+	      \end{itemize}
+	\item The estimated optimal expenditure shares are:
+	      \begin{itemize}
+		      \item FCE: approximately 16.6\% of GDP.
+		      \item GFCF: approximately 2.3\% of GDP.
+		      \item Combined optimal size (FCE + GFCF): approximately 19\% of GDP.
+	      \end{itemize}
+	\item The optimal size of government expenditure appears to depend on income level, as results differ from previous findings for other countries.
+	\item The confirmed non-linear relationship helps explain why prior empirical studies report conflicting positive and negative effects of government size on economic growth.
+\end{itemize}
 
 \printbibliography
 \end{document}
