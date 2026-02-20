@@ -169,3 +169,12 @@ aux/
 *.do.stswp
 *.csv
 *.DS_Store
+*.aux
+*.bbl
+*.blg 
+*.xml 
+*.toc 
+*.synctex.gz
+*.fls
+*.bcf 
+*.fdb_latexmk
