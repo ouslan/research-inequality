@@ -426,7 +426,7 @@ weakens if institutional quality surpasses the threshold value of institutional 
 adjustment in UMI countries is similar to that in HI countries but statistically insignificant. By
 contrast, governments in LMLI countries can promote sustainable debt if their institutional quality
 exceeds the threshold value. Thus, policymakers in LMLI countries need to prioritise their
-efforts to raise the level of institutional quality to promote debt sustainability. \cite{ZHANG2022105942}
+efforts to raise the level of institutional quality to promote debt sustainability. \cite{Lee_Ahmad_Karim_Khalid_2023}
 \subsection{Metadata}
 \begin{enumerate}
 	\item \textbf{Link:} https://doi.org/10.3846/tede.2023.19247
@@ -495,5 +495,116 @@ Where:
 	      \end{itemize}
 \end{itemize}
 
+\section{Paper 9: Resource rents, economic growth, and the role of institutional quality: A panel threshold analysis}
+
+\subsection{Summary}
+
+This study uses rule of law (i.e., institutional quality; IQ) as a threshold variable and revisits the nonlinear
+relationship between natural resource rent and economic growth under the resource curse hypothesis. The research
+utilizes the panel data of 14 resource-rich countries of sub-Saharan Africa (SSA) to identify possible
+threshold level(s) and to assess the effects using conventional OLS standard error and White-correlated standard
+error models. The empirical results confirm the existence of two significant threshold effects, indicating a positive
+relationship between resource rent and economic growth when a country's IQ is above the threshold level
+of $-1.28$ and within the range $-1.28$ to -1.37. However, below the threshold level of -1.37, the resource
+curse starts to operate, impeding economic growth. The results are robust under the alternative specification of
+system generalized methods of moment (GMM). Therefore, in contrast to linear and exogenous threshold estimations,
+this paper shows the required IQ threshold levels for SSA resource-rich countries where they can ensure
+economic growth using their natural resource windfalls. Failing to account for the endogenous non-linearities
+may conceal both the required minimum threshold levels of countries to maintain economic growth and the
+dynamic effects of IQ. Thus, we recommend policymakers and researchers consider the pivotal role of the
+threshold effects of IQ to allow for sustainable economic growth. \cite{abdulahi2019resource}
+
+\subsection{Metadata}
+\begin{enumerate}
+	\item \textbf{Link:} https://doi.org/10.1016/j.resourpol.2019.02.011
+	\item \textbf{Journal Name:} Technological and Economic Development of Economy
+	\item \textbf{Rank:} Q1
+\end{enumerate}
+
+\subsection{Methodology}
+The PTM endogenously determines threshold effects instead of choosing them arbitrarily:
+
+\begin{equation}
+	y_{it} = \mu_i + \beta_1' x_{it} I(q_{it} \leq \gamma) + \beta_2' x_{it} I(q_{it} > \gamma) + \varepsilon_{it}
+\end{equation}
+
+\begin{itemize}
+	\item $y_{it}$: Dependent variable (e.g., real GDP growth rate for country $i$ at time $t$)
+	\item $x_{it}$: $k \times 1$ vector of explanatory variables (regressors)
+	\item $q_{it}$: Threshold variable (e.g., institutional quality)
+	\item $\gamma$: Threshold value of $q_{it}$ separating the regimes
+	\item $I(\cdot)$: Indicator function, equals 1 if the condition is true, 0 otherwise
+	\item $\beta_1, \beta_2$: Coefficient vectors for lower and upper regimes
+	\item $\mu_i$: Country fixed effect
+	\item $\varepsilon_{it}$: Error term, iid with zero mean and finite variance
+\end{itemize}
+
+\textbf{Estimation procedure:}
+\begin{itemize}
+	\item Use Least Squares (LS) minimizing the concentrated sum of squared errors (SSE) to estimate $\gamma$
+	\item Bootstrap method is applied to obtain asymptotically valid confidence intervals and p-values
+	\item Test for threshold effect:
+	      \begin{equation}
+		      LR = \frac{S_0 - S_1(\hat{\gamma})}{\hat{\sigma}^2}
+	      \end{equation}
+	      where $S_0$ and $S_1$ are residual sums of squares without and with threshold, respectively
+	\item Multiple thresholds can be tested sequentially using the same LR and bootstrap procedure
+\end{itemize}
+
+\subsection*{2. Dynamic Panel Threshold Model using GMM}
+
+To address endogeneity and include dynamics:
+
+\begin{equation}
+	y_{it} = \mu_i + \beta_1 y_{it-1} I(q_{it} \leq \gamma) + \beta_2 y_{it-1} I(q_{it} > \gamma) + \beta_3 x_{it} + \varepsilon_{it}
+\end{equation}
+
+\begin{itemize}
+	\item $y_{it-1}$: Lagged dependent variable, included to account for dynamics
+	\item $\beta_3$: Coefficient vector for control variables
+	\item GMM is used (Arellano and Bover, 1995) to handle endogeneity of $y_{it-1}$ and regressors
+	\item Orthogonality condition:
+	      \begin{equation}
+		      E[Z_i' \varepsilon_i] = 0
+	      \end{equation}
+	      where $Z_i$ are instruments for endogenous regressors
+	\item The threshold variable can interact with explanatory variables, creating regime-dependent effects
+\end{itemize}
+\subsection{Conclusions}
+
+\begin{itemize}
+	\item The study examined the relationship between natural resource rents and economic growth in 14 resource-rich SSA countries from 1998 to 2016, using institutional quality (IQ) as a threshold variable.
+	\item A \textbf{nonlinear relationship} was found between resource rents and economic growth due to threshold effects of IQ.
+	\item Countries were divided into \textbf{three threshold regimes} based on IQ:
+	      \begin{itemize}
+		      \item W1: IQ $< -1.375$ (inferior institutions)
+		      \item W2: $-1.375 \leq$ IQ $\leq -1.23$ (medium institutions)
+		      \item W3: IQ $> -1.23$ (stronger institutions)
+	      \end{itemize}
+	\item Effects of resource rents on economic growth:
+	      \begin{itemize}
+		      \item W1 (IQ below -1.375): Negative and significant impact (95\% CI)
+		      \item W2 (IQ between -1.375 and -1.23): Positive and significant impact
+		      \item W3 (IQ above -1.23): Positive and significant impact
+	      \end{itemize}
+	\item \textbf{Proportion of countries benefiting from resource rents:}
+	      \begin{itemize}
+		      \item 50–79\% of countries benefited when IQ was relatively better
+		      \item Maximum 14\% controlled the effect of the resource curse in extreme thresholds
+	      \end{itemize}
+	\item Results were robust across different standard error estimates (OLS SE, White SE) and system GMM.
+	\item The \textbf{double-threshold finding} indicates that countries differ in their institutional capacity to transform resource windfalls into economic growth dividends.
+	\item The nonlinear effect of IQ emphasizes the importance of considering threshold levels to avoid masking the differential impact of resource rents on growth.
+	\item \textbf{Policy implications:}
+	      \begin{itemize}
+		      \item Strong institutions are essential to leverage natural resources for sustainable growth.
+		      \item Policymakers should focus on achieving IQ levels above critical thresholds to mitigate the resource curse.
+	      \end{itemize}
+	\item \textbf{Future research directions:}
+	      \begin{itemize}
+		      \item Extend the study to more resource-rich emerging countries.
+		      \item Compare threshold effects between resource-rich and resource-poor nations.
+	      \end{itemize}
+\end{itemize}
 \printbibliography
 \end{document}
